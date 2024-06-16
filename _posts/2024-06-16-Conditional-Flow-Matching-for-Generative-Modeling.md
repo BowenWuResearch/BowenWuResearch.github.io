@@ -8,9 +8,18 @@ Interestingly, although diffusion models are derived from log-likelihood initial
 The idea of modeling vector field for generative modeling has originated a while ago, where a probability path between a prior distribution and the data distribution is learned using a neural network. The trained networks can be used to estimate the vector field that generates this probability path, which then will be used to move any point from the prior distribution to the data distribution as the generation process.
 
 In order to train such a network, we must have analytical solution for the vector field we want to model. However, this is expensive and often infeasible, as the vector field requires integral on the data: 
-\begin{align}
+
+```math
 u_t(x) = \int u_t(x|x_1) q(x_1) dx_1
-\end{aligh}
+```
+
+$$
+u_t(x) = \int u_t(x|x_1) q(x_1) dx_1
+$$
+
+\\[
+u_t(x) = \int u_t(x|x_1) q(x_1) dx_1
+\\]
 
 where $x_1$ represents each data point. Therefore, it is hard to train a model using this vector field as ground truth.
 
