@@ -36,13 +36,14 @@ $$
 
 where $p_t(x \lvert x_1)$ is the contidional probability path and $u_t(x \lvert x_1)$ is the conditional vector field.
 
-Before using it, it is unclear if $\mathcal{L}_{CFM}$ can be used to train a model that also minimizes $\mathcal{L}_{FM}$. This can be verified by comparing their gradients with respect to the model.
+Before using it, it is unclear if CFM loss can be used to train a model that also minimizes FM loss. This can be verified by comparing their gradients with respect to the model.
+
 $$
-L_{FM}  = E_{t, p_t(x)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x)> + ||u_t(x)||^2]
+\mathcal{L}_{FM}  = E_{t, p_t(x)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x)> + ||u_t(x)||^2]
 $$
 
 $$
-L_{CFM}  = E_{t, q(x_1), p_t(x|x_1)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x|x_1)> + ||u_t(x|x_1)||^2]
+\mathcal{L}_{CFM}  = E_{t, q(x_1), p_t(x|x_1)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x|x_1)> + ||u_t(x|x_1)||^2]
 $$
 
 Since the gradient of $u_t$ with respect to the model is 0, we can only compare the first two terms.
