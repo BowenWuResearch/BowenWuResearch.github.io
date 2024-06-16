@@ -1,7 +1,3 @@
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-# Conditional Flow Matching for Geneartaive Modeling
 This is my personal understanding about the paper [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747).
 
 ## Introduction
@@ -83,3 +79,7 @@ For the continuity eqaution to holds, we need $p_t(x) u_t(x) = \int p_t(x|x_1) u
 $$u_t(x) := \frac{\int p_t(x|x_1) u_t(x|x_1) q(x_1) dx_1}{p_t(x)} = \int u_t(x|x_1) \frac{ p_t(x|x_1) q(x_1)}{p_t(x)} dx_1.$$
 
 As a result, this vector field $u_t(x)$ generates the probability path $p_t(x)$.
+
+
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
