@@ -1,3 +1,6 @@
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['\$','\$'],['\\(','\\)']],processEscapes:true},CommonHTML: {matchFontHeight:false}});</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 # Conditional Flow Matching for Geneartaive Modeling
 This is my personal understanding about the paper [Flow Matching for Generative Modeling](https://arxiv.org/abs/2210.02747).
 
@@ -9,7 +12,9 @@ Interestingly, although diffusion models are derived from log-likelihood initial
 The idea of modeling vector field for generative modeling has originated a while ago, where a probability path between a prior distribution and the data distribution is learned using a neural network. The trained networks can be used to estimate the vector field that generates this probability path, which then will be used to move any point from the prior distribution to the data distribution as the generation process.
 
 In order to train such a network, we must have analytical solution for the vector field we want to model. However, this is expensive and often infeasible, as the vector field requires integral on the data: 
-$$u_t(x) = \int u_t(x|x_1) q(x_1) dx_1, \tag{1}$$
+\begin{align}
+u_t(x) = \int u_t(x|x_1) q(x_1) dx_1
+\end{aligh}
 
 where $x_1$ represents each data point. Therefore, it is hard to train a model using this vector field as ground truth.
 
