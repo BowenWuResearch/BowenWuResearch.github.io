@@ -21,7 +21,7 @@ Considering that common deep learning training algorithms can use only one sampl
 Denoting $v_t(x)$ as the network to be trained, the Flow Matching (FM) loss can be defined as follows:
 
 $$
-\mathcal{L}_{FM} = E_{t, p_t(x)}[||v_t(x) - u_t(x)||^2],
+L_{FM} = E_{t, p_t(x)}[||v_t(x) - u_t(x)||^2],
 $$
 
 where $p_t(x)$ is probability path and $u_t(x)$ is the vector field that generates the probability path.
@@ -31,7 +31,7 @@ The gradient provided by this loss function can be used to optimize a model to o
 Instead, a flow matching loss conditioned on each data point, i.e., CFM loss, is defined as follows:
 
 $$
-\mathcal{L}_{CFM} = E_{t, q(x_1), p_t(x|x_1)}[||v_t(x) - u_t(x|x_1)||^2],
+L_{CFM} = E_{t, q(x_1), p_t(x|x_1)}[||v_t(x) - u_t(x|x_1)||^2],
 $$
 
 where $p_t(x \lvert x_1)$ is the contidional probability path and $u_t(x \lvert x_1)$ is the conditional vector field.
@@ -39,11 +39,11 @@ where $p_t(x \lvert x_1)$ is the contidional probability path and $u_t(x \lvert 
 Before using it, it is unclear if CFM loss can be used to train a model that also minimizes FM loss. This can be verified by comparing their gradients with respect to the model.
 
 $$
-\mathcal{L}_{FM}  = E_{t, p_t(x)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x)> + ||u_t(x)||^2]
+L_{FM}  = E_{t, p_t(x)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x)> + ||u_t(x)||^2]
 $$
 
 $$
-\mathcal{L}_{CFM}  = E_{t, q(x_1), p_t(x|x_1)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x|x_1)> + ||u_t(x|x_1)||^2]
+L_{CFM}  = E_{t, q(x_1), p_t(x|x_1)}[||v_t(x)||^2 - 2 <v_t(x), u_t(x|x_1)> + ||u_t(x|x_1)||^2]
 $$
 
 Since the gradient of $u_t$ with respect to the model is 0, we can only compare the first two terms.
@@ -65,7 +65,7 @@ $$
 u_t(x) :=\int u_t(x|x_1) \frac{ p_t(x|x_1) q(x_1)}{p_t(x)} dx_1.
 $$
 
-Then, the second term of $L_{FM}$ becomes:
+With this paramterization, the second term of $L_{FM}$ becomes:
 
 $$
 E_{t, p_t(x)}[<v_t(x), \int u_t(x|x_1) \frac{ p_t(x|x_1) q(x_1)}{p_t(x)} dx_1>]
@@ -80,7 +80,7 @@ $$
 $$
 
 $$
-= E_{t, q(x_1), p(x|x_1)}[<v_t(x), u_t(x|x_1)>], 
+= E_{t, q(x_1), p_t(x|x_1)}[<v_t(x), u_t(x|x_1)>], 
 $$
 
 which matches the second term of $L_{CFM}$.
