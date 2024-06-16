@@ -48,6 +48,7 @@ $$
 
 Since the gradient of $u_t$ with respect to the model is 0, we can only compare the first two terms.
 For the first term, we can condition $x$ on $x_1$ to match them as follows:
+
 $$
 E_{t, p_t(x)}[||v_t(x)||^2] = E_{t}[||\int v_t(x) p_t(x) dx||^2]
 $$
